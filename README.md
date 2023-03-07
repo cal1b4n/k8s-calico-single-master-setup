@@ -120,7 +120,7 @@ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
 sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
 ```
 
-Little note: At the time of writing this guide, Xenial is the latest Kubernetes repository but when repository gets available for Ubuntu 22.04 (Jammy Jellyfish) you will have to replace **xenial** with **jammy** in ‘apt-add-repository’ command.
+**Quick note: At the time of writing this guide, Xenial is the latest Kubernetes repository but when repository gets available for Ubuntu 22.04 (Jammy Jellyfish) you will have to replace *xenial* with *jammy* in ‘apt-add-repository’ command.**
 
 Install Kubernetes components like kubectl, kubelet and Kubeadm utility on **all the nodes**. Run following set of commands:
 
