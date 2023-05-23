@@ -36,19 +36,18 @@ Set the following Kernel parameters for Kubernetes:
 
 ```bash
 sudo tee /etc/sysctl.d/kubernetes.conf <<EOF
-net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
 net.ipv4.ip_forward = 1
 EOF 
 ```
 
-Reload changes using:
+Reload changes:
 
 ```bash
 sudo sysctl --system
 ```
 
-### 2. Install Docker and Containerd.io
+### 2. Install Docker and Containerd
 
 Update the apt package index and install packages to allow apt to use a repository over HTTPS:
 
@@ -62,7 +61,7 @@ sudo apt-get install \
     lsb-release
 ```
 
-Add Docker’s official GPG key:
+Add Docker GPG key:
 
 ```bash
 sudo mkdir -p /etc/apt/keyrings
@@ -130,7 +129,7 @@ sudo apt install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
 
-**apt-mark hold** command doesn't let the apps to update on their own (good practice basically)
+**apt-mark hold** command doesn't let the apps to update on their own
 
 **Now, we are all set to initialize Kubernetes cluster. Run the following Kubeadm command from the MASTER NODE only.**
 
@@ -138,7 +137,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 kubeadm init --pod-network-cidr=<DESIRED_INTERNAL_IP_RANGE> --apiserver-advertise-address=<INTERNAL_IP_ADDRESS_OF_YOUR_SERVER>
 ```
 
-Quick explanations (Examples):
+Quick explanation:
 
 - --pod-network-cidr=10.244.0.0/16 <----- This will set up an intenral IP network with provided settings
 - --apiserver-advertise-address=172.25.36.81 <----- Advertises master server's address for the nodes to join the cluster.
